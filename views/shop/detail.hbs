@@ -1,17 +1,25 @@
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Product Name</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Specs</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">Product Detail</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Add to Cart</a>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Product Name</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="specs-tab" data-toggle="tab" href="#specs" role="tab" aria-controls="specs" aria-selected="false">Specs</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="card-body tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h4 class="card-title">Product Detail</h4>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+      <div class="card-body tab-pane fade" id="specs" role="tabpanel" aria-labelledby="specs-tab">
+        <h4 class="card-title">Product Specs</h4>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ullam quisquam excepturi nam id magni error voluptatem rem ex, esse distinctio at corporis, sequi culpa ad accusamus fugit veritatis dicta!</p>
+      </div>
+      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
+    </div>
   </div>
 </div>
