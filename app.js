@@ -6,18 +6,19 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expresshbs = require('express-handlebars');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 // routes resources
 const index = require('./routes/index');
 const user = require('./routes/user');
 const shop = require('./routes/shop');
-
+const db = require('./routes/dashboard');
 
 // instantiate app
 const app = express();
 
 // connect to db
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect('localhost:27017/shop');
 
 // view engine setup
 app.engine('.hbs', expresshbs({defaultLayout: 'layout', extname: '.hbs'}));
@@ -29,11 +30,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({ secret: 'mysessionsecret', resave: false, saveUninitialized: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/user', user);
 app.use('/shop', shop);
+app.use('/db', db);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
