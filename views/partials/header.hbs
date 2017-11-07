@@ -9,30 +9,37 @@
       <li class="nav-item active">
         <a class="nav-link" href="/shop">Shop<span class="sr-only">(current)</span></a>
       </li>
-            <li class="nav-item active">
-        <a class="nav-link" href="/user/signup">Sign Up</a>
-      </li>
     </ul>
+
     <form class="form-inline my-2 my-lg-0 mr-auto">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
+    
     <ul class="navbar-nav mr-right">
       <li class="nav-item">
         <a class="nav-link" href="/shop/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</a>
       </li>
+
+      {{# if login }}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i> User Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/user">Account</a>
+          <a class="dropdown-item" href="/user/profile">Account</a>
           <a class="dropdown-item" href="#">Wish List</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/user/signin">Sign In</a>
-          <a class="dropdown-item" href="#">Logout</a>
+          <a class="dropdown-item" href="/user/logout">Logout</a>
         </div>
       </li>
+      {{ else }}
+      <li class="nav-item">
+        <a class="nav-link" href="/user/signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="/user/signin">Sign In</a>
+      </li>
+      {{/if}}
     </ul>
-
   </div>
 </nav>
