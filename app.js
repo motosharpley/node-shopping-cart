@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const expresshbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
 
 // routes resources
 const index = require('./routes/index');
@@ -19,6 +21,7 @@ const app = express();
 
 // connect to db
 mongoose.connect('localhost:27017/shop');
+require('./config/passport');
 
 // view engine setup
 app.engine('.hbs', expresshbs({defaultLayout: 'layout', extname: '.hbs'}));
@@ -31,6 +34,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ secret: 'mysessionsecret', resave: false, saveUninitialized: false }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
