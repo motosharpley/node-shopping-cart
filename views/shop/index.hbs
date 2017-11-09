@@ -1,12 +1,10 @@
-{{# each Products}}
-
-{{/ each}}
 <div class="row">
+  {{# each products}}
   <div class="card text-center col-md-4">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="/shop/detail">Product Title</a>
+          <a class="nav-link active" href="/shop/detail">Product Summary</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Specs</a>
@@ -14,99 +12,11 @@
       </ul>
     </div>
     <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
+      <h4 class="card-title">{{this.title}}</h4>
+      <p class="card-text">{{this.description}}</p>
+      <p class="card-text">${{this.price}}</p>
+      <a href="/shop/add-to-cart/{{this.id}}" class="btn btn-primary" role="button">Add to Cart</a>
     </div>
   </div>
-
-  <div class="card text-center col-md-4">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="/shop/detail">Product Title</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Specs</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
-    </div>
-  </div>
-
-  <div class="card text-center col-md-4">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="/shop/detail">Product Title</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Specs</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
-    </div>
-  </div>
-
-  <div class="card text-center col-md-4">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="/shop/detail">Product Title</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Specs</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
-    </div>
-  </div>
-
-  <div class="card text-center col-md-4">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="/shop/detail">Product Title</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Specs</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
-    </div>
-  </div>
-
-  <div class="card text-center col-md-4">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="/shop/detail">Product Title</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Specs</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">Special title treatment</h4>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="/shop/cart" class="btn btn-primary">Add to Cart</a>
-    </div>
-  </div>
+  {{/each}}
 </div>

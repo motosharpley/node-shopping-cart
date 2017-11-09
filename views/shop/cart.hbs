@@ -8,13 +8,20 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
       <ul class="list-group bg-light text-dark list-group-flush">
-        <li class="list-group-item">Item 1</li>
-        <li class="list-group-item">Item 2</li>
-        <li class="list-group-item">Item 3</li>
+        {{# each products }}
+        <li class="list-group-item">{{this.item.title}}
+          <div class="pull-right">
+            <span class="badge badge-primary p-2">Qty {{this.qty}}</span>
+            <span class="badge badge-secondary p-2">${{this.price}}</span>            
+          </div>
+        </li>        
+        {{/each}}
+        <li class="list-group-item">Total Items<span class="pull-right">{{session.cart.totalQty}}</span></li>
+        <li class="list-group-item">Total Price<span class="pull-right">${{session.cart.totalPrice}}</span></li>
       </ul>
       <div class="card-body">
-        <a href="/shop" class="card-link">Continue Shopping</a>
-        <a href="#" class="card-link">Checkout</a>
+        <a href="/shop" class="btn btn-outline-primary">Continue Shopping</a>
+        <a href="/checkout" class="btn btn-outline-primary">Checkout</a>
       </div>
     </div>
   </div>

@@ -10,6 +10,7 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const validator = require('express-validator');
+const mongoStore = require('connect-mongo')(session);
 
 // routes resources
 const index = require('./routes/index');
@@ -35,7 +36,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 app.use(cookieParser());
-app.use(session({ secret: 'mysessionsecret', resave: false, saveUninitialized: false }));
+app.use(session({ 
+  secret: 'mysessionsecret', 
+  resave: false, 
+  saveUninitialized: false,
+  store: new mongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: {maxAge: 180 * 60 * 1000 }
+}));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,13 +50,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
   res.locals.login = req.isAuthenticated();
+  res.locals.session = req.session;
   next();
 });
 
-app.use('/', index);
 app.use('/user', user);
 app.use('/shop', shop);
 app.use('/db', db);
+app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
