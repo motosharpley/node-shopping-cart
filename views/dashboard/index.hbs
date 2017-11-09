@@ -1,1 +1,24 @@
-<h1>Admin Dashboard</h1>
+<h3 class="text-center" >Admin Dashboard</h3>
+<a href="/db/add_product" class="btn btn-dark pull-left">Add Product</a>
+<div class="row">
+  {{# each products}}
+  <div class="card text-center col-md-4">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="/shop/detail">Product Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Specs</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{this.title}}</h4>
+      <p class="card-text">{{this.description}}</p>
+      <p class="card-text">${{this.price}}</p>
+      <a href="/db/edit/{{this.id}}" class="btn btn-primary" role="button">Edit</a>
+    </div>
+  </div>
+  {{/each}}
+</div>
