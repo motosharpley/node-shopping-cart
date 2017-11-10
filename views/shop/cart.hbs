@@ -2,26 +2,34 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="card col-md-6 text-white bg-dark mb-3" style="width: 20rem;">
-        <div class="card-header text-center"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</div>
-      <div class="card-body">
-        <h4 class="card-title">Username Cart</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
+      <div class="card-header text-center">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</div>
+      {{#if products}}
       <ul class="list-group bg-light text-dark list-group-flush">
-        {{# each products }}
+        {{#each products }}
         <li class="list-group-item">{{this.item.title}}
           <div class="pull-right">
+            <a href="#">Remove</a>
             <span class="badge badge-primary p-2">Qty {{this.qty}}</span>
-            <span class="badge badge-secondary p-2">${{this.price}}</span>            
+            <span class="badge badge-secondary p-2">${{this.price}}</span>
           </div>
-        </li>        
+        </li>      
         {{/each}}
-        <li class="list-group-item">Total Items<span class="pull-right">{{session.cart.totalQty}}</span></li>
-        <li class="list-group-item">Total Price<span class="pull-right">${{session.cart.totalPrice}}</span></li>
-      </ul>
+        <li class="list-group-item list-group-item-dark">Total Price
+          <span class="badge badge-secondary p-2 pull-right">${{totalPrice}}</span>
+        </li>
+      </ul>      
+      {{else}}
+      <div class="card-body">
+        <h4 class="card-title">Username Cart</h4>
+        <p class="card-text">There are no Items in Cart.</p>
+      </div>
+      {{/if}}
       <div class="card-body">
         <a href="/shop" class="btn btn-outline-primary">Continue Shopping</a>
-        <a href="/checkout" class="btn btn-outline-primary">Checkout</a>
+        {{#if products}}
+        <a href="/shop/checkout" class="btn btn-outline-primary">Checkout</a>
+        {{/if}}
       </div>
     </div>
   </div>

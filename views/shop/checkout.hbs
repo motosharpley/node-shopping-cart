@@ -1,1 +1,30 @@
-<h1>Checkout</h1>
+<br>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="card col-md-6 text-white bg-dark mb-3" style="width: 20rem;">
+      <div class="card-header text-center">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</div>
+      {{#if products}}
+      <ul class="list-group bg-light text-dark list-group-flush">
+        {{#each products }}
+        <li class="list-group-item">{{this.item.title}}
+          <div class="pull-right">
+            <span class="badge badge-primary p-2">Qty {{this.qty}}</span>
+            <span class="badge badge-secondary p-2">${{this.price}}</span>
+          </div>
+        </li>
+        {{/each}}
+        <li class="list-group-item list-group-item-secondary">Total Items
+          <span class="pull-right">{{session.cart.totalQty}}</span>
+        </li>
+        <li class="list-group-item list-group-item-dark">Total Price
+          <span class="badge badge-secondary p-2 pull-right">${{totalPrice}}</span>
+        </li>
+      </ul>
+      {{/if}}
+      <div class="card-body">
+        <a href="/shop" class="btn btn-outline-primary">Continue Shopping</a>
+        <a href="/shop/cart" class="btn btn-outline-primary">Back to Cart</a>
+      </div>
+    </div>
+  </div>
