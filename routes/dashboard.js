@@ -73,7 +73,7 @@ router.post('/edit/:id', function(req, res){
     product.description = req.body.description;
     product.price = req.body.price;
 
-    let query = {_id:req.params.id}
+    let query = {_id:req.params.id};
 
     Product.update(query, product, function(err){
         if(err){
@@ -87,6 +87,16 @@ router.post('/edit/:id', function(req, res){
 });
 
 // Delete Product
+router.delete('/:id', function(req, res) {
+  let query = {_id:req.params.id}
+
+  Product.remove(query, function(err) {
+      if(err){
+          console.log(err);
+      }
+      res.send('product deleted');
+  });
+});
 
 
 // Access Control

@@ -54,10 +54,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/', index);
 app.use('/user', user);
 app.use('/shop', shop);
 app.use('/db', db);
-app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -18,6 +18,8 @@
       <p class="card-text">{{this.description}}</p>
       <p class="card-text">${{this.price}}</p>
       <a href="/db/edit/{{this.id}}" class="btn btn-primary" role="button">Edit</a>
+      <a href="#" class="btn btn-danger delete-product" data-id={{this.id}} >Delete</a>
+      <a href="#" ></a>
     </div>
   </div>
   {{/each}}
