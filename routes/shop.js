@@ -10,8 +10,13 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/detail', function(req, res, next) {
-  res.render('shop/detail', { title: 'NodeCart' });
+router.get('/detail/:id', function(req, res, next) {
+  Product.findById(req.params.id, function(err, product){
+    res.render('shop/detail', {
+        title:'Product detail',
+        product:product
+    });
+  });
 });
 
 // Cart Routes

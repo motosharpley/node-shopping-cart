@@ -3,28 +3,55 @@
   <div class="row justify-content-md-center">
     <div class="card col-md-6 text-white bg-dark mb-3" style="width: 20rem;">
       <div class="card-header text-center">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</div>
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout
+      </div>
       {{#if products}}
       <ul class="list-group bg-light text-dark list-group-flush">
-        {{#each products }}
-        <li class="list-group-item">{{this.item.title}}
-          <div class="pull-right">
-            <span class="badge badge-primary p-2">Qty {{this.qty}}</span>
-            <span class="badge badge-secondary p-2">${{this.price}}</span>
-          </div>
-        </li>
-        {{/each}}
         <li class="list-group-item list-group-item-secondary">Total Items
           <span class="pull-right">{{session.cart.totalQty}}</span>
         </li>
         <li class="list-group-item list-group-item-dark">Total Price
-          <span class="badge badge-secondary p-2 pull-right">${{totalPrice}}</span>
+          <span class="badge badge-primary p-2 pull-right">${{totalPrice}}</span>
         </li>
       </ul>
       {{/if}}
       <div class="card-body">
-        <a href="/shop" class="btn btn-outline-primary">Continue Shopping</a>
-        <a href="/shop/cart" class="btn btn-outline-primary">Back to Cart</a>
+        <form action="/checkout" method="post" id="checkout-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="card-name">Card Holder Name</label>
+            <input type="text" name="card-name" id="card-name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" name="card-number" id="card-number" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label for="expiration-month">Expiration Month</label>
+              <input type="text" name="expiration-month" id="expiration-month" class="form-control" required>
+            </div>
+            <div class="form-group col">
+              <label for="expiration-year">Expiration Year</label>
+              <input type="text" name="expiration-year" id="expiration-year" class="form-control" required>
+            </div>
+            <div class="form-group col">
+              <label for="cvc">CVC</label>
+              <input type="text" name="cvc" id="cvc" class="form-control" required>
+            </div>
+          </div>
+          <a href="/shop" class="btn btn-outline-primary">Continue Shopping</a>
+          <a href="/shop/cart" class="btn btn-outline-primary">Back to Cart</a>
+          <button type="submit" class="btn btn-outline-success">Checkout</button>
+        </form>
       </div>
     </div>
   </div>
+</div>
